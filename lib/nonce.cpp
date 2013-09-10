@@ -58,8 +58,11 @@ namespace Nonce {
         assert(!_devrandom->fail() && "devrandom failed");
       #elif defined(_WIN32)
         unsigned a=0, b=0;
-        assert( rand_s(&a) == 0 );
-        assert( rand_s(&b) == 0 );
+        // Temporary comment out these 2 lines since rand_s could not found
+        //assert( rand_s(&a) == 0 );
+        //assert( rand_s(&b) == 0 );
+        a = rand();
+        b = rand();
         n = (((unsigned long long)a)<<32) | b;
       #else
         n = (((unsigned long long)random())<<32) | random();
