@@ -1,0 +1,8 @@
+Import('xenv')
+
+xenv = xenv.Clone()
+
+sources = xenv.Glob('*.cpp')
+xenv.Append(LIBPATH = ['..'], LIBS = ['bson'])
+
+bson_test = xenv.BuildUnitTest('bson_test', sources)
